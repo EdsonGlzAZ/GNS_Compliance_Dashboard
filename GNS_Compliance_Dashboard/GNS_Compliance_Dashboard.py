@@ -4,36 +4,64 @@ import reflex as rx
 
 from rxconfig import config
 
+from .ui.base import base_page
 
-class State(rx.State):
-    """The app state."""
+from . import navigation
 
-    ...
+############## Pages Import #####################
+from .compliance import compliance_page
+from .EOL import eol_page
+from .onboarding import onboarding_page
+from .new_devices import new_devices_page
+from .health_reports import health_reports_page
+from .health_status import health_status_page
+#################################################
+
 
 
 def index() -> rx.Component:
     # Welcome Page (Index)
-    return rx.container(
-        rx.color_mode.button(position="top-right"),
-        rx.vstack(
-            rx.heading("Welcome to Reflex!", size="9"),
-            rx.text(
-                "Get started by editing ",
-                rx.code(f"{config.app_name}/{config.app_name}.py"),
-                size="5",
+    my_child = rx.vstack(
+            rx.image( 
+                src="/logo.png",
+                width="175px",
+                height="auto",
+                border_radius="25%",
             ),
-            rx.link(
-                rx.button("Check out our docs!"),
-                href="https://reflex.dev/docs/getting-started/introduction/",
-                is_external=True,
-            ),
+            rx.heading("Weclome to the NRE Dashboard", size="9"),
             spacing="5",
             justify="center",
-            min_height="85vh",
-        ),
-        rx.logo(),
-    )
+            text_align="center",
+            align = "center",
+            min_height="75vh",
+        )
+    return base_page(my_child)
 
 
 app = rx.App()
 app.add_page(index)
+app.add_page(
+    compliance_page,
+    route=navigation.routes.COMPLIANCE_ROUTE,
+)
+app.add_page(
+    eol_page,
+    route=navigation.routes.END_OF_LIFE_ROUTE,
+)
+app.add_page(
+    onboarding_page,
+    route=navigation.routes.ON_BOARDING_ROUTE,
+)
+app.add_page(
+    new_devices_page,
+    route=navigation.routes.NEW_DEVICES_ROUTE,
+)
+app.add_page(
+    health_status_page,
+    route=navigation.routes.HEALTH_STATUS_ROUTE,
+)
+app.add_page(
+    health_reports_page,
+    route=navigation.routes.HEALTH_REPORTS_ROUTE,
+)
+
