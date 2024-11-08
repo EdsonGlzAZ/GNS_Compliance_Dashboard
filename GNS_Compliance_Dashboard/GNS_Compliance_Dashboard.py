@@ -28,7 +28,7 @@ def index() -> rx.Component:
                 height="auto",
                 border_radius="25%",
             ),
-            rx.heading("Weclome to the NRE Dashboard", size="9"),
+            rx.heading("Weclome to the GNS Dashboard", size="9"),
             spacing="5",
             justify="center",
             text_align="center",

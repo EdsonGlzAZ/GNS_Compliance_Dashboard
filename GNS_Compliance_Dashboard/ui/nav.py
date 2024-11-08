@@ -23,7 +23,7 @@ def navbar() -> rx.Component:
                         border_radius="75%",
                     ),
                     rx.heading(
-                        "GNE Dashboard", size="5", weight="bold"
+                        "GNS Dashboard", size="5", weight="bold"
                     ),
                     align_items="center",
                 ),
