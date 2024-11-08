@@ -2,7 +2,7 @@
 
 Steps to clone and run project:
 
-1. Clone repo and create a virtual environment on your local repo
+1. Clone project and create a virtual environment on your local repo
 ```
 python.exe -m venv venv
 ```
